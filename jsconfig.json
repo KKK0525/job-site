@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "baseUrl": "src/",
+    "sourceMap": false,
+    "paths": {
+      "components/*": ["src/components/*"],
+      "assets/*": ["src/assets/*"],
+      "hooks/*": ["src/hooks/*"],
+      "pages/*": ["src/pages/*"],
+      "stores/*": ["src/stores/*"],
+      "utils/*": ["src/utils/*"],
+      "libs/*": ["src/libs/*"],
+      "App": ["src/App.js"],
+      "widgets": ["src/widgets/*"],
+      "configs": ["src/configs/*"],
+      "layouts": ["src/layouts/*"],
+      "data": ["src/data/*"],
+      "context": ["src/context/*"],
+      "routes": ["src/routes.jsx"]
+    },
+    "strict": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

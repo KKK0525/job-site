@@ -1,0 +1,80 @@
+import React from "react";
+
+const JobSearch = () => {
+  const jobs = [
+    {
+      id: 1,
+      title: "Front End Developer",
+      company: "Spotify Technology",
+      description: "One of the biggest technology companies in the world.",
+      level: "Senior level",
+      salary: "$80K/Year",
+    },
+    {
+      id: 2,
+      title: "Senior UI/UX Designer",
+      company: "Google, Inc.",
+      description: "Contribute your skill set to the biggest tech company.",
+      level: "Senior level",
+      salary: "$200K/Year",
+    },
+    {
+      id: 3,
+      title: "Backend Developer",
+      company: "Apple, Inc.",
+      description: "Expand your skills and be the best version of yourself.",
+      level: "Junior level",
+      salary: "$96K/Year",
+    },
+  ];
+
+  return (
+    <div className="flex bg-gray-100 min-h-screen">
+      {/* Sidebar */}
+      <aside className="w-1/5 bg-white p-6 shadow-md">
+        <h2 className="text-2xl font-bold mb-6">Dashboard</h2>
+        <nav className="space-y-4">
+          <a href="#" className="block text-blue-600 font-semibold">
+            Find Job
+          </a>
+          <a href="#" className="block">Messages</a>
+          <a href="#" className="block">Statistics</a>
+          <a href="#" className="block">Applications</a>
+          <a href="#" className="block">Settings</a>
+        </nav>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 p-6">
+        {/* Search Bar */}
+        <div className="flex items-center justify-between mb-6">
+          <input
+            type="text"
+            placeholder="Search Job"
+            className="border rounded-lg p-2 w-2/3"
+          />
+          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg">
+            Show All Filter
+          </button>
+        </div>
+
+        {/* Job Cards */}
+        <div className="grid grid-cols-3 gap-6">
+          {jobs.map((job) => (
+            <div key={job.id} className="bg-white p-4 shadow-md rounded-lg">
+              <h3 className="text-lg font-bold">{job.title}</h3>
+              <p className="text-gray-600">{job.company}</p>
+              <p className="text-gray-800 mt-2">{job.description}</p>
+              <div className="flex justify-between items-center mt-4">
+                <span className="text-blue-600">{job.level}</span>
+                <span className="text-gray-800 font-semibold">{job.salary}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+    </div>
+  );
+};
+
+export default JobSearch;
