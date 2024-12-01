@@ -34,7 +34,7 @@ import "react-toastify/dist/ReactToastify.css";
 import InfoRecruiter from "pages/landingPage/InfoRecruiter";
 import { Dashboard } from "pages/Admin1/Dashboard";
 // import Dashboard from "components/dashboard/tables";
-import ProtectedRoute from "react-protected-route-component";
+// import ProtectedRoute from "react-protected-route-component";
 import BlogHome from "components/blog/home-blog";
 import DetailNews from "components/blog/body-news/DetailNews";
 import Resumeapplication from "components/resumeService/skillForm";
@@ -81,7 +81,7 @@ export default function App() {
           <Route exact path="/cookie-policy" element={<CookiePolicy />} />
           <Route exact path="/companies" element={<Companies />} />
           <Route exact path="/companies/:id" element={<InfoRecruiter />} />
-          <Route exact path="/about" element={<SignIn/>} />
+          <Route exact path="/about" element={<About/>} />
           <Route exact path="/sign-up" element={<SignUp />} />
           <Route exact path="/sign-in" element={<SignIn/>} />
           <Route exact path="/password/reset/:token" element={<Reset />} />

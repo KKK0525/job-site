@@ -49,16 +49,18 @@ export default function ProfileMenu() {
   return (
     <div>
       <Tooltip title="Profile Menu" arrow className='flex flex-row gap-1'>
-        {user?.profile ? (
-          <Avatar src={user.profile} alt="User Profile" />
-        ) : type === "admin" ? (
-          <Avatar src={logoadmin} alt="Admin Profile" />
-        ) : (
-          <Avatar>{user?.name?.charAt(0)}</Avatar>
-        )}
-        <IconButton onClick={handleClick} edge="end" color="inherit">
-          <FontAwesomeIcon icon={faCaretDown} />
-        </IconButton>
+        <div>
+          {user?.profile ? (
+            <Avatar src={user.profile} alt="User Profile" />
+          ) : type === "admin" ? (
+            <Avatar src={logoadmin} alt="Admin Profile" />
+          ) : (
+            <Avatar>{user?.name?.charAt(0)}</Avatar>
+          )}
+          <IconButton onClick={handleClick} edge="end" color="inherit">
+            <FontAwesomeIcon icon={faCaretDown} />
+          </IconButton>
+        </div>
       </Tooltip>
 
       <Menu

@@ -37,7 +37,6 @@
     "react-input-mask": "^2.0.4",
     "react-linkedin-login-oauth2": "^2.0.1",
     "react-phone-input-2": "^2.15.1",
-    "react-protected-route-component": "^0.1.1",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.21.1",
     "react-scripts": "5.0.1",

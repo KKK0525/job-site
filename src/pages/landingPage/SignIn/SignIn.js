@@ -3,20 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import InputField from "components/InputField";
 import { SetPopupContext } from "App";
 import axios from "axios";
-import isAuth from "libs/isAuth";
 import apiList from "../../../libs/apiList";
 import { userType } from "libs/isAuth";
 import { FcGoogle } from "react-icons/fc";
-import { BsLinkedin } from "react-icons/bs";
 import { Box, Modal, Button, Radio, RadioGroup, FormControlLabel } from "@mui/material";
 import GoogleLoginButton from "./googleLoginButton";
 
-export default function SignIn({ setAuth }) {
+export default function SignIn() {
   const setPopup = useContext(SetPopupContext);
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState("");
   const [user, setUser] = useState(null);
-  const [loggedin, setLoggedin] = useState(isAuth());
+  // const [loggedin, setLoggedin] = useState(isAuth());
   const [loginDetails, setLoginDetails] = useState({
     email: "",
     password: "",
@@ -66,26 +63,28 @@ export default function SignIn({ setAuth }) {
       axios
         .post(apiList.login, loginDetails)
         .then((response) => {
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("type", response.data.type);
-          localStorage.setItem("id", response.data._id);
-          setLoggedin(isAuth());
+          console.log(`this is data :` ,response);
+
+          const { token, type, _id } = response.data;
+          localStorage.setItem("token", token);
+          localStorage.setItem("type", type);
+          localStorage.setItem("id",_id);
+ 
           setPopup({
             open: true,
             icon: "success",
             message: "Logged in successfully",
           });
-          // console.log(response);
-          setAuth(true);
           navigate(`/`);
         })
         .catch((err) => {
+          const errorMessage = err.response?.data?.message || "An error occurred. Please try again.";
           setPopup({
             open: true,
             icon: "warn",
-            message: err.response.data.message,
+            message: errorMessage,
           });
-          // console.log(err.response);
+          // console.log(err.response.data.message);
         });
     } else {
       setPopup({
@@ -115,9 +114,9 @@ export default function SignIn({ setAuth }) {
 
   useEffect(() => {
     if (type === "applicant") {
-      history("/referrals");
+      history("/");
     } else if (type === "recruiter") {
-      history("/admin");
+      history("/");
     } else if (type === "admin") {
       history("/dashboard/*");
     }
@@ -130,7 +129,6 @@ export default function SignIn({ setAuth }) {
       localStorage.setItem("id", user._id);
 
       closegoogleModal();
-      setAuth(true);
       history("/");
       setPopup({
         open: true,
@@ -188,11 +186,6 @@ export default function SignIn({ setAuth }) {
             }}
           />
         </div>
-
-        {/* Error Message */}
-        {errorMessage && (
-          <p className="text-red-500 text-center text-xs mt-4">{errorMessage}</p>
-        )}
 
         {/* Sign In Button */}
         <Button
