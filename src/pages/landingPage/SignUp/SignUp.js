@@ -4,11 +4,10 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import { SetPopupContext } from "App";
 import axios from "axios";
-import isAuth from "libs/isAuth";
 import apiList from "../../../libs/apiList";
 import { MuiChipsInput } from "mui-chips-input";
 import { apiUploadImages } from "libs/uploadImage";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Button } from "@mui/material";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
@@ -18,11 +17,9 @@ import { styled } from '@mui/material/styles';
 export default function SignUp() {
   const history = useNavigate();
   const setPopup = useContext(SetPopupContext);
-  const [loggedin, setLoggedin] = useState(isAuth());
   const [phone, setPhone] = useState("");
   const [chips, setChips] = useState([]);
-  const [imagesPreview, setImagesPreview] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+
 
   const handleChip = (newChips) => {
     setChips(newChips);
@@ -226,7 +223,7 @@ export default function SignUp() {
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("type", response.data.type);
             localStorage.setItem("id", response.data._id);
-            setLoggedin(isAuth());
+            // setLoggedin(isAuth());
             setPopup({
               open: true,
               icon: "success",
@@ -314,7 +311,7 @@ export default function SignUp() {
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("type", response.data.type);
           localStorage.setItem("id", response.data._id);
-          setLoggedin(isAuth());
+          // setLoggedin(isAuth());
           setPopup({
             open: true,
             icon: "success",
@@ -343,7 +340,7 @@ export default function SignUp() {
 
   const uploadFile = async (e) => {
     e.stopPropagation();
-    setIsLoading(true);
+    // setIsLoading(true);
 
     const files = e.target.files;
     if (files && files.length > 0) {
@@ -357,7 +354,7 @@ export default function SignUp() {
 
           console.log(imageUrl);
 
-          setImagesPreview(imageUrl); // Set the preview image
+          // setImagesPreview(imageUrl); // Set the preview image
           setSignupDetails((prevDetails) => ({
             ...prevDetails,
             profile: imageUrl, // Set profile URL for preview
@@ -370,7 +367,7 @@ export default function SignUp() {
         console.error("Upload error:", error);
         toast.error("Error uploading images 🤯");
       } finally {
-        setIsLoading(false);
+        // setIsLoading(false);
       }
     }
   };

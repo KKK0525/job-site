@@ -1,14 +1,12 @@
-import { Typography } from "@material-tailwind/react";
 import { SetPopupContext } from "App";
 import axios from "axios";
 import apiList from "libs/apiList";
-import { userType } from "libs/isAuth";
 import React, { useContext, useEffect, useState } from "react";
 import RecruiterCard from "./RecruiterCard";
 import { Pagination, Box } from "@mui/material";
 
 export default function Recruiter() {
-  const type = userType();
+
   const setPopup = useContext(SetPopupContext);
   const [all, setAll] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);

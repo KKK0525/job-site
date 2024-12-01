@@ -1,14 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import InputField from "components/InputField";
-import apiList from "../../../libs/apiList";
-import axios from "axios";
+// import apiList from "../../../libs/apiList";
+// import axios from "axios";
 import { SetPopupContext } from "App";
 import { userType } from "libs/isAuth";
 import { useNavigate } from "react-router-dom";
 
 export default function ResetPassword({ forgotPassword }) {
   const [email, setEmail] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const [message, setMessage] = useState("");
 
   const setPopup = useContext(SetPopupContext);
@@ -30,22 +29,13 @@ export default function ResetPassword({ forgotPassword }) {
     }
   }, [type, history]);
 
-  const handleInputError = (key, status, message) => {
-    setInputErrorHandler({
-      ...inputErrorHandler,
-      [key]: {
-        error: status,
-        message: message,
-      },
-    });
-  };
   const handleForgot = async () => {
     const verified = !Object.keys(inputErrorHandler).some((obj) => {
       return inputErrorHandler[obj].error;
     });
     try {
       if (verified) {
-        const response = await axios.post(apiList.forgot, { email });
+        // const response = await axios.post(apiList.forgot, { email });
         setPopup({
           open: true,
           icon: "success",
@@ -86,10 +76,6 @@ export default function ResetPassword({ forgotPassword }) {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="firstname@example.com"
         />
-
-        <p className="text-xs text-center mt-6 mb-3 text-red-500">
-          {errorMessage}
-        </p>
 
         <button
           type="submit"

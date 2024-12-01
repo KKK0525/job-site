@@ -63,7 +63,6 @@ export default function SignIn() {
       axios
         .post(apiList.login, loginDetails)
         .then((response) => {
-          console.log(`this is data :` ,response);
 
           const { token, type, _id } = response.data;
           localStorage.setItem("token", token);
@@ -84,7 +83,7 @@ export default function SignIn() {
             icon: "warn",
             message: errorMessage,
           });
-          // console.log(err.response.data.message);
+
         });
     } else {
       setPopup({

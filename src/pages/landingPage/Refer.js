@@ -1,17 +1,13 @@
 import ProgressBar from "components/ProgressBar";
 import ReferNavigation from "components/refer/ReferNavigation";
-import Candidate from "components/refer/steps/Candidate";
-import Motivation from "components/refer/steps/Motivation";
 import Referrer from "components/refer/steps/Referrer";
 import General from "components/refer/steps/General";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { userType } from "libs/isAuth";
-import apiList from "libs/apiList";
 
 export default function Refer() {
-  const history = useNavigate();
   const type = userType();
   const [candidate, setCandidate] = useState({});
   const [referrer, setReferrer] = useState({});
@@ -43,7 +39,7 @@ export default function Refer() {
             email: data.email,
           });
         })
-        .catch((err) => {
+        .catch((err) => { 
           console.log(err);
         });
     }
@@ -87,11 +83,7 @@ export default function Refer() {
   }
 
   function generateStep(value) {
-    switch (value) {
-      // case 0:
-      //   return <Candidate candidate={candidate} addCandidate={addCandidate} />;
-      // case 1:
-      //   return <Motivation referrer={referrer} addMotivation={addReferrer} />;
+    switch (value) {     
       case 0:
         return <Referrer referrer={referrer} addReferrer={addReferrer} />;
       case 1: {

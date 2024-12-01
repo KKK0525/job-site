@@ -3,13 +3,12 @@ import JobAd from "components/JobAd";
 import apiList from "../../libs/apiList";
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Banner from "components/Banner";
 import { userType } from "libs/isAuth";
 import { SetPopupContext } from "App";
 import { Button } from '@mui/material'
 
 export default function Job(props) {
-  let history = useNavigate();
+
   const setPopup = useContext(SetPopupContext);
   const { id } = useParams();
   const [job, setJob] = useState();

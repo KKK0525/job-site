@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { SetPopupContext } from "App";
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
 import { FaBell } from "react-icons/fa";
@@ -8,13 +7,11 @@ import { FaBellSlash } from "react-icons/fa";
 import { Typography } from "@material-tailwind/react";
 import apiList from "libs/apiList";
 import axios from "axios";
-import { useContext } from "react";
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Rating from '@mui/material/Rating';
@@ -26,7 +23,6 @@ export default function PaidBell() {
   const [open, setOpen] = React.useState(false);
   const [openDrawer, setOpenDrawer] = React.useState(false);
   const [drawerView, setDrawerView] = React.useState([]);
-  const [scroll, setScroll] = React.useState('paper');
   const [response, setResponse] = React.useState();
   const recruiterId = localStorage.getItem('id');
   const filerData = response?.filter(
@@ -37,10 +33,7 @@ export default function PaidBell() {
   ) || [];
   const navigater = useNavigate()
 
-  const filteredData = [];
-  const appliedOn = new Date(filerData.map((item) => (item.dateOfApplication)));
   const dataCount = filerData.length;
-  const setPopup = useContext(SetPopupContext);
   const [count, setCount] = React.useState(dataCount);
 
   const toggleDrawer = (newOpen) => () => {
@@ -51,10 +44,6 @@ export default function PaidBell() {
   function handlelistItemClick(_id) {
     navigater(`/admin/${_id}`);
   }
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   React.useEffect(() => {
     setCount(dataCount);

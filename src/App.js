@@ -13,7 +13,7 @@ import Jobs from "pages/landingPage/Jobs";
 import ForRecruiter from "pages/landingPage/For/ForRecruiter";
 import ForApplicant from "pages/landingPage/For/ForApplicant";
 import Leaderboard from "pages/home/Leaderboard";
-import ResetPassword from "pages/landingPage/SignIn/ResetPassword";
+// import ResetPassword from "pages/landingPage/SignIn/ResetPassword";
 import { userType } from "libs/isAuth";
 import Referrals from "pages/home/Referrals";
 import Settings from "pages/home/Settings";
@@ -28,7 +28,7 @@ import AdminJobs from "pages/admin/AdminJobs";
 import AdminSettings from "pages/admin/AdminSettings";
 import CookiePolicy from "pages/landingPage/AboutUs/CookiePolicy";
 import AdminJob from "pages/admin/AdminJob";
-import TalentPool from "pages/admin/TalentPool";
+// import TalentPool from "pages/admin/TalentPool";
 import { Slide, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import InfoRecruiter from "pages/landingPage/InfoRecruiter";
@@ -100,11 +100,11 @@ export default function App() {
           <Route exact path="/leaderboard" element={<Leaderboard />} />
           <Route exact path="/jobs/:id" element={<Job />} />
           <Route exact path="/jobs/:id/refer" element={<Refer />} />
-          <Route
+          {/* <Route
             exact
             path="/sign-in/forgot-password"
-            element={<ResetPassword />}
-          />
+            element={<ResetPassword />}  
+          /> */}
           <Route
             exact
             path="/dashboard/*"
@@ -129,12 +129,12 @@ export default function App() {
             element={<AdminAddJob />}
             type={type}
           />
-          <Route
+          {/* <Route
             exact
             path="/talent-pool"
             element={<TalentPool />}
             type={type}
-          />
+          /> */}
 
           <Route exact path="/applicant/settings" element={<Settings />} />
           <Route exact path="/admin/settings" element={<AdminSettings />} />
@@ -147,7 +147,7 @@ export default function App() {
         </Routes>
         <Footer />
       </Router>
-      <ToastContainer limit={3} autoClose={1000} />
+      <ToastContainer limit={3} autoClose={2000} />
     </SetPopupContext.Provider>
   );
 }
